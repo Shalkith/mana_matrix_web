@@ -1,0 +1,252 @@
+body {
+    background-color: #F5F6F7;
+  }
+  
+  #main-wrapper {
+    max-width: 1000px;
+    margin: 0px auto;
+    line-height: 1.5;
+  }
+  
+  p {
+    margin-bottom: 1.5em
+  }
+  
+  * {
+    font-family: 'Cera Round Pro', sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .gallery {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+  
+  .big-gallery-item {
+    display: block;
+    padding: 2.5%;
+    width: 49.5%;
+  }
+  
+  
+  .gallery-item {
+    display: block;
+    margin: 0 0 9px 0;
+    width: 49.5%;
+  }
+  
+  @media screen and (min-width: 660px) {
+    .gallery-item {
+      width: 32.75%;
+    }
+    .big-gallery-item {
+      width: 65.5%;
+    }
+  }
+  
+  @media screen and (min-width: 920px) {
+    .gallery-item {
+      width: 24.5%;
+    }
+    .big-gallery-item {
+      width: 75%;
+    }
+  
+  }
+  
+  img {
+    width: 100%;
+  }
+  
+  .gallery-item .partners {
+    width: 100%;
+    position: relative;
+    height: 100%;
+  }
+  
+  .partners .partner1 {
+    z-index: 2;
+    position: absolute;
+    height: 85%;
+    width: auto;
+    left: 0;
+    bottom: 8px;
+  }
+  
+  .partners .partner2 {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    width: auto;
+    height: 85%;
+    right: 0;
+    top: 0;
+  }
+  
+  .partners .partner2:hover {
+    z-index: 3;
+  }
+  
+  .partners .info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .info {
+    text-align: center;
+  }
+  
+  .gallery-item {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .pagination {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    padding: 2.5%;
+    width: 99%;
+  }
+  
+  
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    /* min-width: 48px; */
+    width: 44px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+  
+  .pagination a.active {
+    background-color: rgb(30, 144, 255);
+    color: rgb(255, 255, 255);
+  }
+  
+  .pagination a:hover:not(.active) {
+    background-color: rgb(221, 221, 221);
+  }
+  
+  
+  .symbolW {
+    width: 100%;
+    padding-bottom: 100%;
+    background-image: url("https://svgs.scryfall.io/card-symbols/W.svg");
+  }
+  
+  .symbolU {
+    width: 100%;
+    padding-bottom: 100%;
+    background-image: url("https://svgs.scryfall.io/card-symbols/U.svg");
+  }
+  
+  .symbolB {
+    width: 100%;
+    padding-bottom: 100%;
+    background-image: url("https://svgs.scryfall.io/card-symbols/B.svg");
+  }
+  
+  .symbolR {
+    width: 100%;
+    padding-bottom: 100%;
+    background-image: url("https://svgs.scryfall.io/card-symbols/R.svg");
+  }
+  
+  .symbolG {
+    width: 100%;
+    padding-bottom: 100%;
+    background-image: url("https://svgs.scryfall.io/card-symbols/G.svg");
+  }
+  
+  .symbolC {
+    width: 100%;
+    padding-bottom: 100%;
+    background-image: url("https://svgs.scryfall.io/card-symbols/C.svg");
+  }
+  
+  .symbols > a {
+    height: auto;
+    min-width: auto;
+    width: 20%;
+  
+    padding: 5% 3%;
+  }
+  
+  .symbols > a:hover:is(.active) {
+    background-color: rgb(63, 177, 255);
+  }
+  
+  .symbols > .guild {
+    padding: 1%;
+  }
+  
+  .wrapper {
+    width: 20%;
+    display: flex;
+  }
+  
+  .sort-button {
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 32px;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #063953;
+    transition: background-color .5s, color .5s;
+  }
+  
+  .sort-button:hover {
+    background-color: #e9e9e9;
+    color: black;
+    text-decoration: underline;
+  }
+  
+  .sort-button.active {
+    background-color: #063953;
+    color: #dcdcdc;
+  }
+  
+  .sort-button.active:hover {
+    background-color: #063953;
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .card-price {
+    line-height: 0.2;
+    display: block;
+    font-size: .8em;
+    text-align: center;
+    color: blue;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  
+  .card-price-holder {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .tcgplayerlogo {
+    height: .8em;
+    filter: invert(7%) sepia(100%) saturate(7492%) hue-rotate(248deg) brightness(103%) contrast(143%);
+  }
+  
+  .cardkingdomlogo {
+    height: .8em;
+    filter: invert(7%) sepia(100%) saturate(7492%) hue-rotate(248deg) brightness(103%) contrast(143%);
+  }
