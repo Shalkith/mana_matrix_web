@@ -250,3 +250,7 @@ body {
     height: .8em;
     filter: invert(7%) sepia(100%) saturate(7492%) hue-rotate(248deg) brightness(103%) contrast(143%);
   }
+
+  body {
+    padding-top: 56px;
+}

@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,redirect, Response, flash, session
+from flask import Flask, render_template,request,redirect, Response, flash, session, jsonify
 from flask_session import Session
 from scripts import mariadb_runner
 from datetime import datetime
@@ -82,12 +82,26 @@ def commanders():
     commanders = db_runner.get_commanders(session["format"])
     return render_template('commanders.html', commanders=commanders)
 
+@app.route('/search', methods=['POST'])
+def search():
+    card = request.form.get('cards')  # Get the value from the form submission
+    if card:
+        # Process the search with the given commander_name
+        return f"Searching for {card}"
+    return "No search query provided."
+
+
+
 @app.context_processor
 def inject_variable():
+    known_values = db_runner.get_card_names()
+    
+    #known_values =  jsonify(known_values)  # Return JSON list
     try:
-        return dict(format=session["format"])
+        return dict(format=session["format"],known_values = known_values)
     except:
         return dict()
+
 
 if __name__ == '__main__':
     print("Starting Flask app")

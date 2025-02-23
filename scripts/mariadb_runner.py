@@ -30,24 +30,14 @@ def connect():
 def get_topcards(format):
     format = format.lower()
     if format == 'brawl':
-        table = 'hb_decklists'
+        table = 'hb_top_cards'
     if format == 'pedh':
-        table = 'pedh_decklists'
+        table = 'pedh_top_cards'
     if format == 'cedh':
-        table = 'cedh_decklists'
+        table = 'cedh_top_cards'
     if format == 'edh':
-        table = 'edh_decklists'
-    query = f'''
-select hd.card_name, COALESCE(s1.image_url,s3.image_url),COALESCE(s2.image_url,s4.image_url),count(distinct deck_id) from {table} hd 
-left JOIN mtg_datalake.scryfall_images s1 on SUBSTRING_INDEX(hd.card_name, '[and]', 1) = s1.card_name 
-left JOIN mtg_datalake.scryfall_images s2 on SUBSTRING_INDEX(hd.card_name, '[and]', -1) = s2.card_name and s2.card_name not like s1.card_name
-left JOIN mtg_datalake.scryfall_images s3 on SUBSTRING_INDEX(hd.card_name, ' // ', 1) = s3.card_name 
-left JOIN mtg_datalake.scryfall_images s4 on SUBSTRING_INDEX(hd.card_name, ' // ', -1) = s4.card_name and s4.card_name not like s3.card_name
-where hd.card_name not in (
-'Plains','Island','Swamp','Mountain','Forest','Snow-Covered Plains','Snow-Covered Island','Snow-Covered Swamp','Snow-Covered Mountain','Snow-Covered Forest')
-group by 1,2,3 order by 4 desc 
-limit 200
-'''
+        table = 'edh_top_cards'
+    query = f'''select * from {table}'''
     con = connect()   
     query = sqlalchemy.text(query)
     result = con.execute(query)
@@ -88,7 +78,17 @@ left JOIN mtg_datalake.scryfall_images s4 on SUBSTRING_INDEX(commander_name, ' /
     close_connection(con)
     return results 
 
-
+def get_card_names():
+    con = connect()
+    query = 'select distinct card_name from mtg_datalake.scryfall_images order by 1 asc'
+    query = sqlalchemy.text(query)
+    result = con.execute(query)
+    
+    results = []
+    for row in result:
+        results.append(row[0])
+    close_connection(con)
+    return results 
 
 def close_connection(con):
     # explicitly close the connection
