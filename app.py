@@ -85,10 +85,13 @@ def commanders():
 @app.route('/search', methods=['POST'])
 def search():
     card = request.form.get('cards')  # Get the value from the form submission
-    if card:
+    card_id = db_runner.get_card_id(card)
+    if card_id:
         # Process the search with the given commander_name
-        return f"Searching for {card}"
-    return "No search query provided."
+        return redirect(f"/card/{card_id[0]}")
+    return render_template('error.html', message=f"No results found for {card}")
+
+    
 
 
 
