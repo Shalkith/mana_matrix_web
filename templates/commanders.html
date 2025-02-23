@@ -19,12 +19,12 @@ add bootstrap
             {% for commander in commanders %}
             <div class="col-auto col-md-4 col-lg-3 bg-light border">
                 <div class="card">
-                    {% if commander[2] != None %}
+                    {% if commander[3] != None %}
                     <div class="partners">
                         <div style="position: relative;">
                             <img alt="spacer" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASoAAAGfCAQAAABCNFdiAAAC4UlEQVR42u3SQREAAAzCsOHf9EzwI5HQaw7KIgGmwlSYCkyFqTAVmApTYSowFabCVGAqTIWpwFSYClNhKjAVpsJUYCpMhanAVJgKU4GpMBWmAlNhKkyFqcBUmApTgakwFaYCU2EqTAWmwlSYCkyFqTAVmApTYSpMBabCVJgKTIWpMBWYClNhKjAVpsJUYCpMhakwFZgKU2EqMBWmwlRgKkyFqcBUmApTgakwFabCVBJgKkyFqcBUmApTgakwFaYCU2EqTAWmwlSYCkyFqTAVpgJTYSpMBabCVJgKTIWpMBWYClNhKjAVpsJUmApMhakwFZgKU2EqMBWmwlRgKkyFqcBUmApTgakwFabCVGAqTIWpwFSYClOBqTAVpgJTYSpMBabCVJgKU4GpMBWmAlNhKkwFpsJUmApMhakwFZgKU2EqTCUBpsJUmApMhakwFZgKU2EqMBWmwlRgKkyFqcBUmApTYSowFabCVGAqTIWpwFSYClOBqTAVpgJTYSpMhanAVJgKU4GpMBWmAlNhKkwFpsJUmApMhakwFZgKU2EqTAWmwlSYCkyFqTAVmApTYSowFabCVGAqTIWpMBWYClNhKjAVpsJUYCpMhanAVJgKU4GpMBWmwlQSYCpMhanAVJgKU4GpMBWmAlNhKkwFpsJUmApMhakwFaYCU2EqTAWmwlSYCkyFqTAVmApTYSowFabCVJgKTIWpMBWYClNhKjAVpsJUYCpMhanAVJgKU4GpMBWmwlRgKkyFqcBUmApTgakwFaYCU2EqTAWmwlSYClOBqTAVpgJTYSpMBabCVJgKTIWpMBWYClNhKkwlAabCVJgKTIWpMBWYClNhKjAVpsJUYCpMhanAVJgKU2EqMBWmwlRgKkyFqcBUmApTgakwFaYCU2EqTIWpwFSYClOBqTAVpgJTYSpMBabCVJgKTIWpMBWYClNhKkwFpsJUmApMhakwFZgKU2EqMBWmwlRgKkyFqRj2SwUBoCOf66IAAAAASUVORK5CYII=" class="partner3" style="position: relative;">
-                            <img loading="lazy" class="partner1" src="{{ commander[1] }}" class="partner1">
-                            <img loading="lazy"  class="partner2" src="{{ commander[2] }}" class="partner2">
+                            <img loading="lazy" class="partner1" src="{{ commander[2] }}" class="partner1">
+                            <img loading="lazy"  class="partner2" src="{{ commander[3] }}" class="partner2">
                         </div>
                     </div>
                 
@@ -32,13 +32,13 @@ add bootstrap
 
                     {% else %}
                     
-                        <img loading="lazy" src="{{ commander[1] }}" alt="{{ commander[0] }}">
+                        <img loading="lazy" src="{{ commander[2] }}" alt="{{ commander[0] }}">
                     
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ commander[0] }}</h5>
-                        <p class="card-text">{{ commander[3] }} Decks</p>
-                        <a href="/commanders/{{ commander.id }}" class="btn btn-primary">Details</a>
+                        <p class="card-text">{{ commander[4] }} Decks</p>
+                        <a href="/card/{{ commander[1] }}" class="btn btn-primary">Details</a>
                     </div>
                 </div>
             </div>

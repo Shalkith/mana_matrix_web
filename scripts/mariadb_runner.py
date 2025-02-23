@@ -52,22 +52,15 @@ def get_topcards(format):
 def get_commanders(format):
     format = format.lower()
     if format == 'brawl':
-        table = 'hb_deck_details'
+        table = 'hb_commanders'
     if format == 'pedh':
-        table = 'pedh_deck_details'
+        table = 'pedh_commanders'
     if format == 'cedh':
-        table = 'cedh_deck_details'
+        table = 'cedh_commanders'
     if format == 'edh':
-        table = 'edh_deck_details'
+        table = 'edh_commanders'
     con = connect()    
-    query = f"""
-    select commander_name,COALESCE(s1.image_url,s3.image_url),COALESCE(s2.image_url,s4.image_url),count(distinct deck_id) from {table}
-left JOIN mtg_datalake.scryfall_images s1 on SUBSTRING_INDEX(commander_name, '[and]', 1) = s1.card_name 
-left JOIN mtg_datalake.scryfall_images s2 on SUBSTRING_INDEX(commander_name, '[and]', -1) = s2.card_name and s2.card_name not like s1.card_name
-left JOIN mtg_datalake.scryfall_images s3 on SUBSTRING_INDEX(commander_name, ' // ', 1) = s3.card_name 
-left JOIN mtg_datalake.scryfall_images s4 on SUBSTRING_INDEX(commander_name, ' // ', -1) = s4.card_name and s4.card_name not like s3.card_name
-    where commander_name is not null
-    group by 1 ,2,3 order by 4 desc """
+    query = f"""select * from {table}"""
 
     query = sqlalchemy.text(query)
     result = con.execute(query)
@@ -80,7 +73,20 @@ left JOIN mtg_datalake.scryfall_images s4 on SUBSTRING_INDEX(commander_name, ' /
 
 def get_card_names():
     con = connect()
-    query = 'select distinct card_name from mtg_datalake.scryfall_images order by 1 asc'
+    query = 'select distinct card_name,oracle_id from mtg_datalake.scryfall_images order by 1 asc'
+    query = sqlalchemy.text(query)
+    result = con.execute(query)
+    
+    results = []
+    for row in result:
+        results.append(row[0])
+    close_connection(con)
+    return results 
+
+def get_card_id(name):
+    con = connect()
+    name = name.lower()
+    query = f"select distinct oracle_id from mtg_datalake.scryfall_images where lower(card_name) = '{name}' order by 1 asc"
     query = sqlalchemy.text(query)
     result = con.execute(query)
     
