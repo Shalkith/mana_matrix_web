@@ -1,0 +1,122 @@
+
+<!-- Full-Screen Loading Overlay (Initially Hidden) -->
+<div id="loadingOverlay"  style="display: none; margin-top: 10px;">
+    <div class="loading-container">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p id="loadingMessage" >Loading... Please wait.</p>
+    </div>
+</div>
+
+<style>
+    /* Full-Screen Overlay */
+    #loadingOverlay {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+        z-index: 9999; /* Ensures it stays on top */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Centered Loading Container */
+    .loading-container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Spinner Size */
+    .spinner-border {
+        width: 3rem;
+        height: 3rem;
+    }
+</style>
+
+<script>
+    function showLoading() {
+        const messages = [
+            "Shuffling the deck...",
+            "Summoning creatures...",
+            "Fetching mana...",
+            "Checking the stack...",
+            "Rolling for initiative...",
+            "Scrying for results...",
+            "Drawing the best hand...",
+            "Tapping lands for processing...",
+            "Resolving the query spell...",
+            "Fetching data from the command zone...",
+                  
+            "Summoning servers... please don't counter this!",
+            "Fetching data... but it's coming in tapped.",
+            "Shuffling your results... hope it’s not a land pocket!",
+            "Resolving requests... please hold priority.",
+            "Drawing data for turn... no mulligans allowed!",
+            "Loading... hope it’s not a slow play warning.",
+            "Tapping for mana... please wait for the perfect curve.",
+            "Scrying for results... bottoming slow queries.",
+            "Casting a search spell... hold on, still on the stack.",
+            "Rolling Arena shuffler... expect either too much or too little data!",
+            "Waiting for priority... opponents are thinking... forever.",
+            "Reconnecting to the server... hope it’s not a soft lock!",
+            "Resolving infinite loop... wait, did we just go to time?",
+            "Untapping the data... results coming soon!",
+            "Paying the Arena tax... wildcards not included.",
+            "Checking daily quest progress... ‘View results 20 times’ not completed.",
+            "Attempting to resolve... blue players, please don’t interact.",
+            
+            "Negotiating priority... please hold while the table debates.",
+            "Checking threat levels... someone’s loading something scary!",
+            "Shuffling a 100-card deck... this might take a second.",
+            "Waiting for turn... three other players need to finish first.",
+            "Tapping Sol Ring... powering up results!",
+            "Resolving a ten-card stack... this could take a while.",
+            "Arguing over rule interactions... expect delays.",
+            "Asking the table... 'Are we sure this resolves?'",
+            "Casting a tutor... digging up the right results.",
+            "Checking for responses... don’t worry, it’s not a counterspell.",
+            "Loading... just like an EDH game past turn 10.",
+            "Drawing results for turn... hoping for a bomb, not a land.",
+            "Digging through the graveyard... trying to find lost results!",
+            "Paying commander tax... this load might take longer than expected.",
+            "Casting Time Stretch... might take two extra turns to finish.",
+            "Waiting for green player... ramping before results appear.",
+            "Loading results... Rhystic Study says, 'Did you pay the tax?'",
+            "Targeting search results... still waiting for stack resolution.",
+            "Casting Chaos Warp... let’s see what this loads into!",
+            "Rolling a D20... higher roll means faster results!",
+            "Attempting infinite combo... query still resolving.",
+            "Checking exile zone... results might be there.",
+            "Scanning for stax effects... this page should load... eventually.",
+            "Fetching lands... hope it doesn’t take forever!",
+            "Taking a short break... let me know when the stack clears.",
+            "Holding priority... waiting for everyone else to pass.",
+            "Searching for search results... recursion is fun!",
+            "Reanimating the database... it’s coming back to life!",
+            "Shuffling back into the deck... might take a moment.",
+            "Waiting for the blue player... results might get countered.",
+            "Passing turn... but results should be here soon!",
+            "Politicking the results... should be ready any second now!"
+        
+        ];
+
+        // Pick a random message
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+        // Set the message in the loading overlay
+        document.getElementById("loadingMessage").textContent = randomMessage;
+        // Show the overlay
+        document.getElementById("loadingOverlay").style.display = "flex";
+
+        // Submit the form or trigger an API call
+        document.getElementById("queryForm").submit(); // Adjust this if using AJAX
+    }
+</script>

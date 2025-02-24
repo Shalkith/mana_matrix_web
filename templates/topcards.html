@@ -4,6 +4,7 @@ add bootstrap
 
 {% include 'header.html' %}
 
+{% include 'loading.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +39,7 @@ add bootstrap
                     <div class="card-body">
                         <h5 class="card-title">{{ card[0] }}</h5>
                         <p class="card-text">{{ card[5] }} Decks</p>
-                        <a href="/card/{{ card[1] }}" class="btn btn-primary">Details</a>
+                        <a href="/card/{{ card[1] }}" class="btn btn-primary"  onclick="showLoading()">Details</a>
                     </div>
                 </div>
             </div>
