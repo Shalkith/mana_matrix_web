@@ -1,0 +1,24 @@
+<!--
+add bootstrap
+--> 
+
+{% include 'header.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body >
+    
+    {% include 'commanders_using_this.html' %}
+    {% include 'this_cards_decks.html' %}
+    {% include 'decks_that_use_this_card.html' %}
+    {% include 'avg_deck.html' %}
+    {% include 'top_cards_used_by_this.html' %}
+    
+</body>
+</html>

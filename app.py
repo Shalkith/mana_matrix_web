@@ -91,7 +91,12 @@ def search():
         return redirect(f"/card/{card_id[0]}")
     return render_template('error.html', message=f"No results found for {card}")
 
-    
+@app.route('/card/<card_id>')
+def get_card(card_id):
+        used_in_decks,this_card_decks,top_commanders_for_this,avg_deck,top_cards,card_name = db_runner.get_card_details(card_id,session["format"])
+        return render_template('card.html', used_in_decks=used_in_decks,this_card_decks=this_card_decks,
+                               top_commanders_for_this=top_commanders_for_this,avg_deck=avg_deck,top_card=top_cards,
+                                card_name=card_name )
 
 
 

@@ -1,0 +1,16 @@
+
+        <!-- Top Cards Used with This Commander -->
+        <h2 class="mt-4">🏆 Top Synergistic Cards</h2>
+        <div class="row">
+            {% for card in top_cards %}
+            <div class="col-auto col-md-4 col-lg-3 bg-light border">
+                <div class="card">
+                    <img loading="lazy" src="{{ card.image_url }}" alt="{{ card.card_name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ card }}</h5>
+                        <p class="card-text">{{ card.quantity }}x - <em>{{ card.type_line }}</em></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>

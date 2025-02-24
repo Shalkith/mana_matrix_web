@@ -1,0 +1,24 @@
+    
+        <!-- Average Deck Composition - Copyable Text Box -->
+        <h2 class="mt-4">📋 Copy & Paste Average Deck Composition</h2>
+        <div class="mb-3">
+            <textarea id="averageDeckText" class="form-control" rows="10" readonly>
+        {% for card in avg_deck %}{% if card[1] == card_name %}
+        Commander
+        {{ card[2] | int }} {{ card[1] }}
+        Deck
+        {% endif %}{% endfor %}{% for card in avg_deck %}{% if card[1] == card_name %}{% else %}
+        {{ card[2] | int }} {{ card[1] }}{% endif %}{% endfor %}
+            </textarea>
+            <button class="btn btn-primary mt-2" onclick="copyAverageDeck()">Copy to Clipboard</button>
+        </div>
+        
+        <script>
+            function copyAverageDeck() {
+                var copyText = document.getElementById("averageDeckText");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); // For mobile devices
+                document.execCommand("copy");
+                alert("Deck list copied to clipboard!");
+            }
+        </script>

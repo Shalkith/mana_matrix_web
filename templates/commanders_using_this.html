@@ -1,0 +1,25 @@
+
+<div class="container">
+    <h1 class="mt-4">{{ card_name }} Analysis</h1>
+
+    <!-- Top Commanders Using This Card -->
+    <h2 class="mt-4">🔥 Top Commanders Using {{ card_name }}</h2>            
+
+    <div class="row">
+        {% for commander in top_commanders_for_this %}
+        <div class="col-auto col-md-4 col-lg-3 bg-light border">
+            <div class="card">
+
+                
+                <img loading="lazy" src="{{ commander[2] }}" alt="{{ commander[0] }}">
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ commander[0] }}</h5>
+                    <p class="card-text">{{ commander[1] }} Decks</p>
+                    <a href="/card/{{ commander[3] }}" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,24 @@
+    <!-- This Cards Decks - Data Table -->
+    <h2 class="mt-4">📜 Sample {{ card_name }} Decks</h2>
+    <div class="table-container">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Commander</th>
+                    <th>Deck Name</th>
+                    <th>Colors</th>
+                    <th>Deck Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for deck in this_card_decks %}
+                <tr>
+                    <td>{{ deck.commander_name }}</td>
+                    <td>{{ deck.deck_name }}</td>
+                    <td>{{ deck.colors }}</td>
+                    <td><a href="{{ deck.publicurl }}" target="_blank">View Deck</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
