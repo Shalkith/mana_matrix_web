@@ -89,7 +89,7 @@ def search():
     if card_id:
         # Process the search with the given commander_name
         
-        return render_template('error.html',redirect=f"/card/{card_id[0]}", message="Loading")
+        #return render_template('error.html',redirect=f"/card/{card_id[0]}", message="Loading")
         return redirect(f"/card/{card_id[0]}")
     return render_template('error.html', message=f"No results found for {card}")
 

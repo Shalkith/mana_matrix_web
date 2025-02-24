@@ -2,7 +2,7 @@
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mana-matrix.css') }}">
-
+    {% include 'loading.html' %}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
@@ -43,7 +43,7 @@
                 <input class="form-control me-2" type="search" name="cards" id="search-box" 
                        placeholder="Search Cards..." aria-label="Search" list="search-suggestions">
                 <datalist id="search-suggestions"></datalist>
-                <button class="btn btn-outline-light" type="submit">Search</button>
+                <button class="btn btn-outline-light" type="submit"  onclick="showLoading()">Search</button>
             </form>
             
             <script>
