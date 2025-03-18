@@ -115,7 +115,8 @@ def get_card_details(card_id,format):
     for row in result:
         results.append(row[0])
     card_name = results[0]
-
+    card_name = card_name.replace("'","''")
+    print(card_name)
     query = f"""
     #decks card is used in
     SELECT DISTINCT 
@@ -128,8 +129,9 @@ def get_card_details(card_id,format):
     FROM mtg_datalake_processed.{table}_deck_details d
     JOIN mtg_datalake_processed.{table}_decklists l 
         ON d.deck_id = l.deck_id
-    WHERE LOWER(l.card_name) LIKE LOWER('{card_name}') order by d.viewcount+0 desc limit 10"""
+    WHERE LOWER(l.card_name) LIKE LOWER('{card_name}') and LOWER(d.commander_name) not LIKE LOWER('{card_name}') order by d.viewcount+0 desc limit 10"""
     query = sqlalchemy.text(query)
+    print(query)
     result = con.execute(query)
     results = []
     for row in result:
@@ -154,6 +156,7 @@ def get_card_details(card_id,format):
         results.append(row)
     this_card_decks = results
 
+
     query = f"""
     # commanders that use this card
     SELECT  
@@ -165,7 +168,7 @@ def get_card_details(card_id,format):
     JOIN mtg_datalake_processed.{table}_decklists l 
         ON d.deck_id = l.deck_id
     left join mtg_datalake.scryfall_images si on si.card_name = d.commander_name 
-    WHERE LOWER(l.card_name) LIKE LOWER('{card_name}')
+    WHERE LOWER(l.card_name) LIKE LOWER('{card_name}')   and LOWER(d.commander_name) not LIKE LOWER('{card_name}')
     group by 1,3,4 order by 2 desc limit 10"""
     query = sqlalchemy.text(query)
     result = con.execute(query)
@@ -206,6 +209,7 @@ def get_card_details(card_id,format):
         results.append(row)
     top_cards = results
     close_connection(con)
+    card_name = card_name.replace("''","'")
 
     return used_in_decks,this_card_decks,top_commanders_for_this,avg_deck,top_cards,card_name
 
